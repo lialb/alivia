@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { CellProps } from "./crosswordData";
+import { CellProps } from "@/components/crossword/crosswordData";
 
 export const Cell: React.FC<CellProps> = ({
   cell,

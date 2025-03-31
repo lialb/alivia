@@ -3,13 +3,13 @@ import React, { useState, useEffect, KeyboardEvent, useRef } from "react";
 
 import classNames from "classnames";
 
-import { Cell } from "./cell";
+import { Cell } from "@/components/crossword/cell";
 import {
   CROSSWORD_DATA,
   CellData,
   CrosswordData,
   cells,
-} from "./crosswordData";
+} from "@/components/crossword/crosswordData";
 
 // Create a proper deep copy of cells for React state management
 const initializeCells = () => {
@@ -409,7 +409,7 @@ const Crossword: React.FC = () => {
 
   return (
     <div
-      className="p-4 w-full max-w-screen-xl mx-auto"
+      className="p-4 w-full max-w-screen-xl mx-auto bg-pink-100"
       tabIndex={0}
       onKeyDown={handleKeyDown}
       ref={crosswordRef}
@@ -431,7 +431,7 @@ const Crossword: React.FC = () => {
         {/* Left side - Crossword grid and current clue */}
         <div className="md:w-auto flex-shrink-0">
           <div className="mb-4">
-            <div className="bg-blue-100 p-2 rounded">
+            <div className="bg-white p-2 rounded">
               <p className="font-bold break-words">
                 {currentDirection === "across" ? "Across" : "Down"}:{" "}
                 {getCurrentClue()}
