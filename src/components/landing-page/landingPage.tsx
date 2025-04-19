@@ -6,6 +6,7 @@ import Image from "next/image";
 import classNames from "classnames";
 
 import { StateContext } from "@/components/states";
+import { PinkButton } from "@/components/PinkButton";
 
 type FloatingImage = {
   id: number;
@@ -288,12 +289,9 @@ const GirlfriendLandingPage: React.FC = () => {
                   </p>
 
                   <div className="py-3">
-                    <button
-                      className="w-full py-3 px-4 bg-gradient-to-r from-pink-400 to-pink-600 text-white font-medium rounded-lg shadow-md hover:from-pink-500 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50 transform transition hover:scale-105 cursor-pointer"
-                      onClick={handleProceedToPuzzle}
-                    >
+                    <PinkButton onClick={handleProceedToPuzzle}>
                       Proceed to puzzle
-                    </button>
+                    </PinkButton>
                   </div>
                 </div>
               )}

@@ -2,7 +2,7 @@
 
 import { createContext, useState } from "react";
 
-export type State = "home" | "crossword" | "letter";
+export type State = "home" | "crossword" | "letter" | "rewards";
 
 type StateContextType = {
   state: State | null;

@@ -1,5 +1,11 @@
 "use client";
-import React, { useState, useEffect, KeyboardEvent, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  KeyboardEvent,
+  useRef,
+  useContext,
+} from "react";
 
 import classNames from "classnames";
 
@@ -10,6 +16,8 @@ import {
   CrosswordData,
   cells,
 } from "@/components/crossword/crosswordData";
+import { StateContext } from "../states";
+import { PinkButton } from "../PinkButton";
 
 // Create a proper deep copy of cells for React state management
 const initializeCells = () => {
@@ -71,6 +79,19 @@ const Crossword: React.FC = () => {
   const [selectedWordId, setSelectedWordId] = useState<number | null>(null);
   const [isPuzzleComplete, setIsPuzzleComplete] = useState<boolean>(false);
   const crosswordRef = useRef<HTMLDivElement>(null);
+  const { setState } = useContext(StateContext);
+
+  const NextButton = () => {
+    return (
+      <PinkButton
+        onClick={() => {
+          setState("rewards");
+        }}
+      >
+        Proceed
+      </PinkButton>
+    );
+  };
 
   // Focus the crossword div on mount
   useEffect(() => {
@@ -419,11 +440,21 @@ const Crossword: React.FC = () => {
       </h1>
 
       {isPuzzleComplete && (
-        <div className="mb-4 w-full bg-green-100 p-4 rounded text-center">
-          <p className="text-green-800 font-bold text-xl">
-            Congratulations! You've solved the puzzle correctly!
-          </p>
-        </div>
+        <>
+          <div className="mb-4 w-full bg-green-100 p-4 rounded text-center">
+            <p className="text-green-800 font-bold text-xl">
+              Congratulations! You've solved the puzzle correctly!
+            </p>
+          </div>
+          <NextButton />
+          <br />
+        </>
+      )}
+      {!isPuzzleComplete && (
+        <>
+          <NextButton />
+          <br />
+        </>
       )}
 
       {/* Main content - side by side layout */}

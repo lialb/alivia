@@ -2,6 +2,7 @@
 import { useContext } from "react";
 
 import Crossword from "@/components/crossword/crossword";
+import Rewards from "@/components/rewards/rewards";
 import GirlfriendLandingPage from "@/components/landing-page/landingPage";
 import Letter from "@/components/letter/letter";
 import { StateContext, StateProvider } from "@/components/states";
@@ -29,6 +30,10 @@ function StatePicker() {
 
   if (state === "crossword") {
     return <Crossword />;
+  }
+
+  if (state === "rewards") {
+    return <Rewards />;
   }
 
   if (state === "letter") {
