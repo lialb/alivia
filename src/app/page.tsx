@@ -6,11 +6,13 @@ import Rewards from "@/components/rewards/rewards";
 import GirlfriendLandingPage from "@/components/landing-page/landingPage";
 import Letter from "@/components/letter/letter";
 import { StateContext, StateProvider } from "@/components/states";
+import AudioPlayer from "@/components/AudioPlayer";
 
 export default function Home() {
   return (
     <div className="bg-pink-100">
       <StateProvider>
+        <AudioPlayer />
         <StatePicker />
       </StateProvider>
     </div>
