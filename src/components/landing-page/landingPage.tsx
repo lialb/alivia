@@ -7,6 +7,7 @@ import classNames from "classnames";
 
 import { StateContext } from "@/components/states";
 import { PinkButton } from "@/components/PinkButton";
+import { getImagePath } from "@/utils";
 
 type FloatingImage = {
   id: number;
@@ -171,7 +172,12 @@ const GirlfriendLandingPage: React.FC = () => {
               "transform 0.2s ease-out, opacity 0.8s ease-in-out, scale 0.8s ease-in-out",
           }}
         >
-          <Image alt="girlfriend" src={img.src} width={160} height={160} />
+          <Image
+            alt="girlfriend"
+            src={getImagePath(img.src)}
+            width={160}
+            height={160}
+          />
         </div>
       ))}
 

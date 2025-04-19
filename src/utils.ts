@@ -1,0 +1,6 @@
+const prefix = process.env.NODE_ENV === "production" ? "/alivia" : "";
+
+export function getImagePath(src: string) {
+  const normalizedSrc = src.startsWith("/") ? src : `/${src}`;
+  return `${prefix}${normalizedSrc}`;
+}

@@ -25,7 +25,7 @@ Albert
     .split("\n");
 
   const [visibleLines, setVisibleLines] = useState<number[]>([]);
-  const [visibleWords, setVisibleWords] = useState<Record<string, boolean>>({}); // Properly typed as a record of string keys to boolean values
+  const [visibleWords, setVisibleWords] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     // Show each line with a 2-second delay
