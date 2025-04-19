@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 
 import classNames from "classnames";
 
-const AnimatedLetter = () => {
-  // Parse the letter into lines and words
-  const LETTER = `
+const LETTER = `
 Dearest Olivia,
 Wow! A whole year :)
 Can you believe it's been this long?
@@ -14,15 +12,21 @@ Had a lot of adventures.
 Eaten so much food. 
 (we fat)
 I'm so grateful for all the memories we've made together.
-Thank you for being so kind. So patient. So understanding.
+And I'm excited for all the new ones we'll make.
+---
 I love you.
-I'm so lucky to have you in my life.
-I can't wait for season 2. 
+I've found myself falling more in love with you every day.
+I hope this doesn't sound too cheesy.
+But ...
+I cannot wait for season 2. 
 Love,
 Albert
 `
-    .trim()
-    .split("\n");
+  .trim()
+  .split("\n");
+
+const AnimatedLetter = () => {
+  // Parse the letter into lines and words
 
   const [visibleLines, setVisibleLines] = useState<number[]>([]);
   const [visibleWords, setVisibleWords] = useState<Record<string, boolean>>({});

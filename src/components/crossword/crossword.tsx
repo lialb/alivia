@@ -450,12 +450,13 @@ const Crossword: React.FC = () => {
           <br />
         </>
       )}
-      {!isPuzzleComplete && (
+
+      {/* {!isPuzzleComplete && (
         <>
           <NextButton />
           <br />
         </>
-      )}
+      )} */}
 
       {/* Main content - side by side layout */}
       <div className="flex flex-col md:flex-row gap-8 items-start">
