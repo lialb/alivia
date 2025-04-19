@@ -23,7 +23,7 @@ echo "Copying build files to docs directory"
 cp -r out/* docs/ || echo "Build directory not found. Please check your build output path."
 
 # Bypass Jekyll for Github Pages
-touch out/.nojekyll
+cp .nojekyll docs/.nojekyll
 
 echo "Committing changes to gh-pages branch"
 git add docs
