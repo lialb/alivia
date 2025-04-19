@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useState, useEffect, useContext } from "react";
 import { StateContext } from "../states";
 import { PinkButton } from "../PinkButton";
-import { getImagePath } from "@/utils";
+import { getAssetPath } from "@/utils";
+
 const Rewards = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showButton, setShowButton] = useState(false);
@@ -43,7 +44,7 @@ const Rewards = () => {
             }`}
           >
             <Image
-              src={getImagePath(image.src)}
+              src={getAssetPath(image.src)}
               alt={image.alt}
               fill
               style={{ objectFit: "contain" }}

@@ -7,7 +7,7 @@ import classNames from "classnames";
 
 import { StateContext } from "@/components/states";
 import { PinkButton } from "@/components/PinkButton";
-import { getImagePath } from "@/utils";
+import { getAssetPath } from "@/utils";
 
 type FloatingImage = {
   id: number;
@@ -23,18 +23,17 @@ type FloatingImage = {
 const GirlfriendLandingPage: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [isCorrectName, setIsCorrectName] = useState<boolean>(false);
+  const [isIncorrectName, setIsIncorrectName] = useState<boolean>(false);
   const [showPuzzle, setShowPuzzle] = useState<boolean>(false);
   const [floatingImages, setFloatingImages] = useState<FloatingImage[]>([]);
   const [flowers, setFlowers] = useState<
     { id: number; x: number; y: number; size: number; bloom: number }[]
   >([]);
-  // Add state for the exit animation
   const [isExiting, setIsExiting] = useState<boolean>(false);
 
   const mainContainerRef = useRef<HTMLDivElement>(null);
   const { setState } = useContext(StateContext);
 
-  // Initialize floating images
   useEffect(() => {
     const images: FloatingImage[] = [];
     for (let i = 0; i < 7; i++) {
@@ -90,21 +89,20 @@ const GirlfriendLandingPage: React.FC = () => {
     };
   }, []);
 
-  // Handle name submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.toLowerCase() === "olivia") {
       setIsCorrectName(true);
       createFlowers();
 
-      // Show puzzle after flower animation
       setTimeout(() => {
         setShowPuzzle(true);
       }, 3000);
+    } else {
+      setIsIncorrectName(true);
     }
   };
 
-  // Create flowers when correct name is entered
   const createFlowers = () => {
     const newFlowers = [];
     for (let i = 0; i < 30; i++) {
@@ -135,15 +133,12 @@ const GirlfriendLandingPage: React.FC = () => {
     }, 50);
   };
 
-  // Handle transition to puzzle
   const handleProceedToPuzzle = () => {
-    // Start exit animation
     setIsExiting(true);
 
-    // Wait for animation to complete before changing state
     setTimeout(() => {
       setState("crossword");
-    }, 1000); // Match this duration with the CSS transition time
+    }, 1000);
   };
 
   return (
@@ -174,7 +169,7 @@ const GirlfriendLandingPage: React.FC = () => {
         >
           <Image
             alt="girlfriend"
-            src={getImagePath(img.src)}
+            src={getAssetPath(img.src)}
             width={160}
             height={160}
           />
@@ -248,6 +243,16 @@ const GirlfriendLandingPage: React.FC = () => {
             }
           )}
         >
+          {isIncorrectName && !isCorrectName && (
+            <div className="text-center">
+              <h1 className="text-4xl font-bold text-center mb-8 text-pink-500 animate-pulse">
+                Incorrect name! This website isn't for you.
+              </h1>
+              <p className="text-2xl font-medium text-pink-600 mb-4 animate-bounce">
+                Please leave.
+              </p>
+            </div>
+          )}
           {!isCorrectName ? (
             <>
               <h1 className="text-4xl font-bold text-center mb-8 text-pink-500 animate-pulse">
