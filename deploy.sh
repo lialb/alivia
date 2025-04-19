@@ -20,7 +20,7 @@ npm run build
 mkdir -p docs
 
 echo "Copying build files to docs directory"
-cp -r .next/* docs/ || echo "Build directory not found. Please check your build output path."
+cp -r out/* docs/ || echo "Build directory not found. Please check your build output path."
 
 echo "Committing changes to gh-pages branch"
 git add docs
