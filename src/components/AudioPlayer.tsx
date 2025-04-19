@@ -29,7 +29,6 @@ export default function AudioPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Save current position before changing source
     const wasPlaying = !audio.paused;
 
     audio.src = getAssetPath(SONGS[currentSongIndex]);
