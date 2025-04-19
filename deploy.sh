@@ -17,6 +17,7 @@ npm install
 echo "Building the project"
 npm run build
 
+rm -rf /docs
 mkdir -p docs
 
 echo "Copying build files to docs directory"
