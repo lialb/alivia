@@ -9,11 +9,10 @@ else
     git checkout -b gh-pages
 fi
 
-git rm -rf . || true
-git clean -fdx || true
-
 echo "Pulling from main branch to overwrite gh-pages"
-git pull origin main --force
+git pull origin main --force --no-rebase -X theirs
+
+npm install
 
 echo "Building the project"
 npm run build
