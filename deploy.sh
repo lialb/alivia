@@ -9,9 +9,6 @@ else
     git checkout -b gh-pages
 fi
 
-git rm -rf . || true
-git clean -fdx || true
-
 echo "Pulling from main branch to overwrite gh-pages"
 git pull origin main --force
 
